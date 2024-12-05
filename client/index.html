@@ -1,18 +1,73 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.png" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apnaghar.com</title>
     <meta name="description" content="Buy, Sell and Rent Properties" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&display=swap"
       rel="stylesheet"
     />
+    <style>
+      .chatbot-container {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        z-index: 1000;
+        display: none; /* Initially hidden */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        background-color: #fff;
+      }
+      .chatbot-container iframe {
+        border: none;
+        border-radius: 8px;
+      }
+      .chatbot-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 24px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+
+    
+    <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+
+
+    <div id="chatbot-container" class="chatbot-container">
+      <iframe
+        width="350"
+        height="430"
+        allow="microphone;"
+        src="https://console.dialogflow.com/api-client/demo/embedded/5ecef1d0-2480-4135-95ba-3a2901c62750"
+      ></iframe>
+    </div>
+
+    <script>
+      function toggleChatbot() {
+        const chatbot = document.getElementById("chatbot-container");
+        chatbot.style.display = chatbot.style.display === "none" || chatbot.style.display === "" ? "block" : "none";
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

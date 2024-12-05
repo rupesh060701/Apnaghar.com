@@ -16,6 +16,13 @@ app.use(cors({ origin: process.env.CLIENT_URL,credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+	return res.json({
+		success: true,
+		message: "Your server is up and running ...",
+	});
+});
+
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);

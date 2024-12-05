@@ -13,6 +13,35 @@ function SinglePage() {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const handleSendMessage = async () => {
+    // Check if user is logged in
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+
+    try {
+      // Ensure receiverId is defined
+      if (!post.user.id) {
+        console.error("Receiver ID is missing");
+        return;
+      }
+
+      // Send a request to create a chat with the post's user
+      const res = await apiRequest.post("/chats", {
+        receiverId: post.user.id
+      });
+
+      // Navigate to the chat page, passing the chat ID if available
+      navigate(`/chat/${res.data.id}`);
+    } catch (err) {
+      console.error("Failed to create chat", err);
+      // Optionally show an error message to the user
+      // For example, using a toast or alert
+    }
+  };
+
+
 
   const handleSave = async () => {
     if (!currentUser) {
@@ -56,6 +85,14 @@ function SinglePage() {
             ></div>
           </div>
         </div>
+
+        <div>
+          <h1>Recommended House</h1><br></br>
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus omnis sed consequuntur? Veritatis rem odit quibusdam cumque est aut esse molestias nemo numquam, nihil ipsam architecto obcaecati laborum commodi laudantium itaque suscipit inventore doloremque eos quidem deserunt libero! Animi, reiciendis.
+
+        </div>
+
       </div>
       <div className="features">
         <div className="wrapper">
@@ -140,7 +177,9 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button >
+            <button
+              onClick={handleSendMessage}
+            >
               <img src="/chat.png" alt="" />
               Send a Message
             </button>
@@ -152,10 +191,15 @@ function SinglePage() {
             >
               <img src="/save.png" alt="" />
               {saved ? "Place Saved" : "Save the Place"}
-                </button>
+            </button>
           </div>
         </div>
       </div>
+
+
+
+
+
     </div>
   );
 }
