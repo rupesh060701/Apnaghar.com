@@ -37,6 +37,12 @@
 - **Real-time Chat**: Socket.io
 - **Other Tools**: Cloudinary for photo storage
 
+  ##  Team Member
+
+- *Rupesh Kumar*
+- *Lakshya Raj*
+- *Sudhanshu shekhar*
+
 
 
 
