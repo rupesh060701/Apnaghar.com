@@ -4,6 +4,9 @@
 
 ---
 
+![Alt Text](client/public/img1.png "Apnaghar")
+![Alt Text](client/public/img2.png "Apnaghar")
+
 ## 🚀 Features
 
 - **Authentication**: Secure Sign Up & Log In using JWT and Bcrypt.
